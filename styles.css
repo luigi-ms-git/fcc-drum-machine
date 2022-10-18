@@ -1,0 +1,10 @@
+#drum-machine {
+  height: 100vh;
+  width: 100vw;
+  padding-top: 10vh;
+}
+
+#display {
+  font-size: 1.3rem;
+  padding: 1.5vw 5vw;
+}
