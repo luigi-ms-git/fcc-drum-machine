@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Drum Machine</title>
+  
+  <link rel="stylesheet" href="./styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+    crossorigin="anonymous">
+</head>
+<body>
+  <main id="drum-machine" class="container-fluid">
+    <div class="row">
+      <div class="col-11">
+        <output id="display"></output>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-5">
+        <button class="drum-pad btn btn-info">Q
+          <audio id="Q" src="./audios/Kick.mp3" class="clip"></audio>
+        </button>
+        <button class="drum-pad btn btn-info">W
+          <audio id="W" src="./audios/Clap.mp3" class="clip"></audio>
+        </button>
+        <button class="drum-pad btn btn-info">E
+          <audio id="E" src="./audios/Closed_Hat.mp3" class="clip"></audio>
+        </button>
+        <button class="drum-pad btn btn-info">A
+          <audio id="A" src="./audios/Open_Hat.mp3" class="clip"></audio>
+        </button>
+        <button class="drum-pad btn btn-info">S
+          <audio id="S" src="./audios/Kick_n_Hat.mp3" class="clip"></audio>
+        </button>
+        <button class="drum-pad btn btn-info">D
+          <audio id="D" src="./audios/Heater-1" class="clip"></audio>
+        </button>
+        <button class="drum-pad btn btn-info">Z
+          <audio id="Z" src="./audios/Heater-2" class="clip"></audio>
+        </button>
+        <button class="drum-pad btn btn-info">X
+          <audio id="X" src="./audios/Heater-3" class="clip"></audio>
+        </button>
+        <button class="drum-pad btn btn-info">C
+          <audio id="C" src="./audios/Heater-4_1" class="clip"></audio>
+        </button>
+      </div>
+    </div>
+  </main>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+	<script type="module">
+		import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+			
+  	createApp({
+			data() {
+			  return {}
+			},
+			mounted() {}
+		}).mount('#drum-machine');
+	</script>
+</body>
+</html>
