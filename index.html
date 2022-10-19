@@ -16,15 +16,14 @@
   <main id="drum-machine" class="container-fluid bg-light">
     <div class="row">
       <div class="col-4" id="buttons">
-        <button v-for="i in items" 
-          :key="i" 
-          id=i.audioName 
+        <button v-for="(it, index) in items" 
+          :key="it" 
+          :id=it.audioName 
+          @click="playAudio"
           class="drum-pad btn btn-info">
-          {{ i.keyb }}
-          <audio v-for="p in paths"
-            :key="p"
-            id=i.keyb 
-            src=p class="clip"></audio>
+          {{ it.keyb }}
+          <audio :id=it.keyb 
+            :src=paths[index] class="clip"></audio>
         </button>
       </div>
       <div class="col-7 d-flex align-items-center">
@@ -55,17 +54,22 @@
             { keyb: "X", audioName: "Heater-3" },
             { keyb: "C", audioName: "Heater-4" },
           ],
-          paths: []
+          paths: [],
+          display: document.getElementById("display")
         }
       },
-      mounted() {
+      created() {
         this.items.forEach(i => {
           this.paths.push("./audios/"+i.audioName+".mp3");
         });
+      },
+      methods: {
+        playAudio(ev){
+          this.display.innerText = ev.target.id;
+          ev.target.children[0].play();
+        }
       }
     }).mount('#buttons');
   </script>
-  
-  <script src="./script.js"></script>
 </body>
 </html>
