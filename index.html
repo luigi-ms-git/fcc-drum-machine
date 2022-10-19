@@ -15,33 +15,16 @@
 <body>
   <main id="drum-machine" class="container-fluid bg-light">
     <div class="row">
-      <div class="col-5">
-        <button id="kick" class="drum-pad btn btn-info">Q
-          <audio id="Q" src="./audios/Kick.mp3" class="clip"></audio>
-        </button>
-        <button id="clap" class="drum-pad btn btn-info">W
-          <audio id="W" src="./audios/Clap.mp3" class="clip"></audio>
-        </button>
-        <button id="closedHat" class="drum-pad btn btn-info">E
-          <audio id="E" src="./audios/Closed_Hat.mp3" class="clip"></audio>
-        </button>
-        <button id="openHat" class="drum-pad btn btn-info">A
-          <audio id="A" src="./audios/Open_Hat.mp3" class="clip"></audio>
-        </button>
-        <button id="kickAndHat" class="drum-pad btn btn-info"> S
-          <audio id="S" src="./audios/Kick_n_Hat.mp3" class="clip"></audio>
-        </button>
-        <button id="heater1" class="drum-pad btn btn-info">D
-          <audio id="D" src="./audios/Heater-1.mp3" class="clip"></audio>
-        </button>
-        <button id="heater2" class="drum-pad btn btn-info">Z
-          <audio id="Z" src="./audios/Heater-2.mp3" class="clip"></audio>
-        </button>
-        <button id="heater3" class="drum-pad btn btn-info"> X 
-          <audio id="X" src="./audios/Heater-3.mp3" class="clip"></audio>
-        </button>
-        <button id="heater4" class="drum-pad btn btn-info">C
-          <audio id="C" src="./audios/Heater-4.mp3" class="clip"></audio>
+      <div class="col-4" id="buttons">
+        <button v-for="i in items" 
+          :key="i" 
+          id=i.audioName 
+          class="drum-pad btn btn-info">
+          {{ i.keyb }}
+          <audio v-for="p in paths"
+            :key="p"
+            id=i.keyb 
+            src=p class="clip"></audio>
         </button>
       </div>
       <div class="col-7 d-flex align-items-center">
@@ -55,6 +38,34 @@
 		crossorigin="anonymous"></script>
 	<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 
+  <script type="module">
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  
+    createApp({
+      data() {
+        return {
+          items: [
+            { keyb: "Q", audioName: "Kick" },
+            { keyb: "W", audioName: "Clap" },
+            { keyb: "E", audioName: "Closed_Hat" },
+            { keyb: "A", audioName: "Open_Hat" },
+            { keyb: "S", audioName: "Kick_n_Hat" },
+            { keyb: "D", audioName: "Heater-1" },
+            { keyb: "Z", audioName: "Heater-2" },
+            { keyb: "X", audioName: "Heater-3" },
+            { keyb: "C", audioName: "Heater-4" },
+          ],
+          paths: []
+        }
+      },
+      mounted() {
+        this.items.forEach(i => {
+          this.paths.push("./audios/"+i.audioName+".mp3");
+        });
+      }
+    }).mount('#buttons');
+  </script>
+  
   <script src="./script.js"></script>
 </body>
 </html>
